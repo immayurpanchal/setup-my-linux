@@ -1,9 +1,11 @@
 import os
+import click
 
 
 def install():
-    print("Installing VSCode 🧰")
     try:
+        click.clear()
+        click.secho("Installing VSCode 🧰", fg="yellow")
         os.system(
             "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
         )
@@ -17,5 +19,13 @@ def install():
         os.system("sudo apt install apt-transport-https")
         os.system("sudo apt update")
         os.system("sudo apt install code")
+        click.secho(
+            "Successfully installed VSCode ✅",
+            fg="bright_green",
+            bold=True,
+            blink=True,
+        )
+    except KeyboardInterrupt:
+        click.secho("Pressed Ctrl+C, Aborting the script 🔥", fg="red")
     except:
-        print("Failed to install VSCode ❌, Existing the system")
+        print("Failed to install VSCode ❌, Existing the system", bold=True, blink=True)
