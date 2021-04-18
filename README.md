@@ -11,14 +11,15 @@ pip3 install -r requirements.txt
 ```
 
 # After installing zsh plugins 
+
+### Open terminal and type: 
 ```
-Open terminal and type: 
 exec zsh 
 zshconfig 
+```
 
-Now zshrc file will be open in editor: 
-search for plugins and add plugins in the list 
-
+### Now zshrc file will be open in editor, search for plugins and add plugins in the list 
+```
 plugins=(
   git
   zsh-syntax-highlighting
