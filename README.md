@@ -43,5 +43,20 @@ plugins=(
   fzf
 )
 ```
-
-
+#### TODO: 
+- [ ] Create GIF video of installation 
+- [ ] Node js installation support 
+- [ ] Powerlevel10k theme installation 
+- [ ] Mac Gesture installation
+- [ ] postman 
+- [ ] Git 
+- [x] VSCode
+- [x] Brave 
+- [x] firefox 
+- [x] Gnome Tweak Tool 
+- [x] qBittorrent 
+- [x] copyQ 
+- [x] VLC Media Player 
+- [x] Stacer 
+- [x] oh my zsh terminal 
+- [x] zsh plugins i.e. sudo, git, syntax-highlighting, auto-suggestions, fzf, z, fuck
