@@ -47,7 +47,7 @@ def qbittorrent():
             "Successfully installed qBitTorrent ✅",
             fg="bright_green",
             bold=True,
-            blink=True,
+            
         )
     except:
         click.secho("Failed to install qBitTorrent ❌", fg="red", bold=True, blink=True)
@@ -62,7 +62,7 @@ def gnome_tweak_tool():
             "Successfully installed Gnome Tweak Tool ✅",
             fg="bright_green",
             bold=True,
-            blink=True,
+            
         )
     except:
         click.secho(

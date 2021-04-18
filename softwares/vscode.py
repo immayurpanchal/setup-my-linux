@@ -23,7 +23,6 @@ def install():
             "Successfully installed VSCode ✅",
             fg="bright_green",
             bold=True,
-            blink=True,
         )
     except KeyboardInterrupt:
         click.secho("Pressed Ctrl+C, Aborting the script 🔥", fg="red")
