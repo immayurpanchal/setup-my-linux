@@ -6,6 +6,7 @@ from InquirerPy import prompt
 import softwares.vscode as vscode
 import softwares.browser as browser
 import softwares.utilities as utilities
+import softwares.oh_my_zsh as oh_my_zsh
 
 extensions_to_be_installed = [
     "https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/",
@@ -34,6 +35,39 @@ utility_softwares = [
     {"enabled": False, "value": "gnome_tweak_tool", "name": "Gnome Tweak Tool"},
 ]
 
+zsh_plugins = [
+    {
+        "enabled": True,
+        "value": "zsh_syntax_highlighting",
+        "name": "Zsh Syntax Highlighting",
+    },
+    {
+        "enabled": True,
+        "value": "z",
+        "name": "Z directory changer",
+    },
+    {
+        "enabled": True,
+        "value": "fzf",
+        "name": "Fzf",
+    },
+    {
+        "enabled": True,
+        "value": "sudo",
+        "name": "Sudo",
+    },
+    {
+        "enabled": True,
+        "value": "zsh_autosuggestions",
+        "name": "Zsh Autosuggestions",
+    },
+    {
+        "enabled": True,
+        "value": "git",
+        "name": "Git",
+    },
+]
+
 questions = [
     # editor
     {
@@ -56,7 +90,35 @@ questions = [
         "choices": browsers,
         "name": "browser",
     },
+    # OH My ZSH
+    {
+        "type": "confirm",
+        "message": "Do you want give your terminal super power 💪 by installting 👨‍🎤 Oh My Zsh  🧰",
+        "name": "ohmyzsh",
+        "default": True,
+    },
+    {
+        "type": "checkbox",
+        "message": "Select plugins to install",
+        "name": "zsh_plugins",
+        "choices": zsh_plugins,
+        "when": lambda result: result["ohmyzsh"],
+    },
 ]
+
+
+def install_zsh_plugins(plugins_list):
+    for item in plugins_list:
+        if item == "zsh_syntax_highlighting":
+            oh_my_zsh.zsh_syntax_highlighting()
+        if item == "zsh_autosuggestions":
+            oh_my_zsh.zsh_autosuggestions()
+        if item == "fuck":
+            oh_my_zsh.the_fuck()
+        if item == "z":
+            oh_my_zsh.z()
+        if item == "fzf":
+            oh_my_zsh.fzf()
 
 
 def main():
@@ -64,7 +126,6 @@ def main():
         click.secho(
             "Welcome 😎 to Setup my Linux 💻 (Ubuntu 20.04)",
             fg="bright_yellow",
-            blink=True,
             bold=True,
         )
         result = prompt(questions)
@@ -99,6 +160,10 @@ def main():
 
                 if item == "gnome_tweak_tool":
                     utilities.gnome_tweak_tool()
+
+        if result.get("ohmyzsh"):
+            oh_my_zsh.install()
+            install_zsh_plugins(result.get("zsh_plugins", []))
 
         for item in extensions_to_be_installed:
             click.secho(f"💡 {item}", fg="bright_cyan")
