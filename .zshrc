@@ -129,4 +129,3 @@ compinit -u
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /home/mayur/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -134,7 +134,7 @@ def main():
         if result.get("editor"):
             vscode.install()
 
-        if len(result.get("browser")):
+        if len(result.get("browser") or []):
             click.secho("Browser ... ", fg="bright_blue")
             for item in result.get("browser"):
                 if item == "brave":
@@ -143,7 +143,7 @@ def main():
                 if item == "firefox":
                     browser.firefox()
 
-        if len(result.get("utilities")):
+        if len(result.get("utilities") or []):
             click.secho("Installing Utilities...", fg="bright_blue")
             for item in result.get("utilities"):
                 if item == "stacer":
@@ -161,7 +161,7 @@ def main():
                 if item == "gnome_tweak_tool":
                     utilities.gnome_tweak_tool()
 
-        if result.get("ohmyzsh"):
+        if result.get("ohmyzsh" or []):
             oh_my_zsh.install()
             install_zsh_plugins(result.get("zsh_plugins", []))
 

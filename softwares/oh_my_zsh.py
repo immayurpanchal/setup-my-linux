@@ -77,7 +77,7 @@ def zsh_syntax_highlighting():
             f"rm -rf /home/{os.getlogin()}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
         )
         os.system(
-            "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+            f"git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/{os.getlogin()}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
         )
         click.secho(
             "Successfully installed Syntax highliting 🆗",
@@ -99,7 +99,7 @@ def zsh_autosuggestions():
             f"rm -rf /home/{os.getlogin()}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
         )
         os.system(
-            "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+            f"git clone https://github.com/zsh-users/zsh-autosuggestions /home/{os.getlogin()}/.oh-my-zsh/plugins/zsh-autosuggestions"
         )
         click.secho(
             "Successfully installed Zsh Auto suggestions 🆗",
@@ -161,6 +161,46 @@ def fzf():
         click.secho("Failed to install z plugin ❌", fg="red", bold=True)
 
 
+def powerlevel10ktheme():
+    try:
+        click.secho(
+            "Installing Powerlevel10k theme 🔥",
+            fg="bright_yellow",
+            bold=True,
+        )
+        os.system(
+            f"git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/{os.getlogin()}/.oh-my-zsh/custom/themes/powerlevel10k"
+        )
+        click.secho(
+            "Successfully Powerlevel10k theme in Oh My Zsh ✅",
+            fg="bright_green",
+            bold=True,
+        )
+        click.secho(
+            "Copying default theme of powerlevel10k",
+            fg="bright_yellow",
+            bold=True,
+        )
+        os.system("cp ./.p10k.zsh ~/.p10k.zsh")
+        click.secho(
+            "Successfully copied Powerlevel10k theme in ~/.p10k.zsh ✅",
+            fg="bright_green",
+            bold=True,
+        )
+        click.secho(
+            "To configure the theme, restart your terminal using 'exec zsh' command and then type 'p10k configure' ✅",
+            fg="bright_green",
+            bold=True,
+            blink=True,
+        )
+    except:
+        click.secho(
+            "Failed to install Powerlevel10k theme ❌",
+            fg="red",
+            bold=True,
+        )
+
+
 def install():
     try:
         click.secho(
@@ -205,6 +245,8 @@ def install():
             fg="bright_green",
             bold=True,
         )
+        # install powerlevel10k theme
+        powerlevel10ktheme()
     except:
         click.secho(
             "Failed to install Oh My Zsh ❌",

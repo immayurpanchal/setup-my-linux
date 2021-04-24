@@ -48,9 +48,9 @@ plugins=(
 )
 ```
 #### TODO: 
-- [ ] Create GIF video of installation 
+- [x] Add video of installation 
 - [ ] Node js installation support 
-- [ ] Powerlevel10k theme installation 
+- [x] Powerlevel10k theme installation 
 - [ ] Mac Gesture installation
 - [ ] postman 
 - [ ] Git 
