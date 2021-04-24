@@ -49,7 +49,7 @@ plugins=(
 ```
 #### TODO: 
 - [x] Add video of installation 
-- [ ] Node js installation support 
+- [x] Node js installation support 
 - [x] Powerlevel10k theme installation 
 - [ ] Mac Gesture installation
 - [ ] postman 

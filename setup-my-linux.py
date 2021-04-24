@@ -7,6 +7,7 @@ import softwares.vscode as vscode
 import softwares.browser as browser
 import softwares.utilities as utilities
 import softwares.oh_my_zsh as oh_my_zsh
+import softwares.nodejs as nodejs
 
 extensions_to_be_installed = [
     "https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/",
@@ -33,6 +34,10 @@ utility_softwares = [
     {"enabled": False, "value": "vlc", "name": "VLC"},
     {"enabled": False, "value": "qbittorrent", "name": "qbittorrent"},
     {"enabled": False, "value": "gnome_tweak_tool", "name": "Gnome Tweak Tool"},
+]
+
+programming_languages = [
+    {"enabled": False, "value": "nodejs", "name": "NodeJS"},
 ]
 
 zsh_plugins = [
@@ -68,6 +73,14 @@ zsh_plugins = [
     },
 ]
 
+
+def is_node_selected(result):
+    for item in result["programming_languages"]:
+        if item == "nodejs":
+            return True
+    return False
+
+
 questions = [
     # editor
     {
@@ -82,6 +95,26 @@ questions = [
         "message": "Select Utility tools to install",
         "name": "utilities",
         "choices": utility_softwares,
+    },
+    # programming languages
+    {
+        "type": "checkbox",
+        "message": "Select Programming language(s) to install",
+        "name": "programming_languages",
+        "choices": programming_languages,
+    },
+    # if node is selected, give stable / latest installation choice
+    {
+        "type": "rawlist",
+        "name": "node_version",
+        "choices": [
+            {"name": "latest", "value": "latest"},
+            {"name": "stable", "value": "stable"},
+        ],
+        "multiselect": False,
+        "validate": lambda result: len(result) > 1,
+        "message": "Select Stable/Latest version to install",
+        "when": lambda result: is_node_selected(result),
     },
     # browsers
     {
@@ -164,6 +197,16 @@ def main():
         if result.get("ohmyzsh" or []):
             oh_my_zsh.install()
             install_zsh_plugins(result.get("zsh_plugins", []))
+
+        if result.get("programming_languages" or []):
+            for item in result.get("programming_languages"):
+                if item == "nodejs":
+                    nodejs.install()
+
+                    if result["node_version"] == "stable":
+                        nodejs.install_stable_nodejs()
+                    if result["node_version"] == "latest":
+                        nodejs.install_latest_nodejs()
 
         for item in extensions_to_be_installed:
             click.secho(f"💡 {item}", fg="bright_cyan")
