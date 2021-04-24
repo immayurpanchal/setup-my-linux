@@ -1,3 +1,7 @@
+
+https://user-images.githubusercontent.com/17003525/115948766-bb35c600-a4ed-11eb-8570-9e7f88e06fba.mp4
+
+
 ## Execute below shell commmands
 ```
 1. git clone https://github.com/immayurpanchal/setup-my-linux.git ~/Documents/
