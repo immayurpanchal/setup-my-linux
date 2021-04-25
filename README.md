@@ -51,7 +51,7 @@ plugins=(
 - [x] Add video of installation 
 - [x] Node js installation support 
 - [x] Powerlevel10k theme installation 
-- [ ] Mac Gesture installation
+- [x] Mac Gesture installation
 - [ ] postman 
 - [ ] Git 
 - [x] VSCode
