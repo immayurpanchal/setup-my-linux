@@ -52,8 +52,7 @@ plugins=(
 - [x] Node js installation support 
 - [x] Powerlevel10k theme installation 
 - [x] Mac Gesture installation
-- [ ] postman 
-- [ ] Git 
+- [x] Postman 
 - [x] VSCode
 - [x] Brave 
 - [x] firefox 
