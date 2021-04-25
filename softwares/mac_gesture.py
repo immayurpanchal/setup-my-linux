@@ -17,6 +17,8 @@ def install():
         os.system("sudo apt-get install libinput-tools")
         click.secho("Installing ruby 🚧", fg="bright_yellow", bold=True)
         os.system("sudo apt-get install ruby")
+        click.secho("Installing ruby gem 🚧", fg="bright_yellow", bold=True)
+        os.system("sudo apt-get install rubygems")
         click.secho("Installing fusuma 🚧", fg="bright_yellow", bold=True)
         os.system("sudo gem install fusuma")
         click.secho("Installing xdotool 🚧", fg="bright_yellow", bold=True)
