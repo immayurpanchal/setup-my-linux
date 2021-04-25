@@ -63,3 +63,12 @@ plugins=(
 - [x] Stacer 
 - [x] oh my zsh terminal 
 - [x] zsh plugins i.e. sudo, git, syntax-highlighting, auto-suggestions, fzf, z, fuck
+
+
+## FAQ 
+1. How can I autostart mac gesture on login? 
+   - https://github.com/iberianpig/fusuma/blob/master/README.md#autostart-gnome-session-properties
+2. How can I change powerlevel10k theme configurations? 
+   - Open Terminal and type ```p10k configure```
+3. How can I modify the icons positions and number of icons visible in the terminal?
+   - https://github.com/romkatv/powerlevel10k
