@@ -9,6 +9,7 @@ import softwares.utilities as utilities
 import softwares.oh_my_zsh as oh_my_zsh
 import softwares.nodejs as nodejs
 import softwares.mac_gesture as mac_gesture
+import softwares.postman as postman
 
 extensions_to_be_installed = [
     "https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/",
@@ -39,6 +40,11 @@ utility_softwares = [
 
 programming_languages = [
     {"enabled": False, "value": "nodejs", "name": "NodeJS"},
+]
+
+developer_softwares = [
+    {"enabled": False, "value": "postman", "name": "Postman"},
+    {"enabled": False, "value": "vscode", "name": "VSCode"},
 ]
 
 zsh_plugins = [
@@ -83,12 +89,12 @@ def is_node_selected(result):
 
 
 questions = [
-    # editor
+    # developer softwares
     {
-        "type": "confirm",
-        "message": "Do you want to install VSCode",
-        "name": "editor",
-        "default": True,
+        "type": "checkbox",
+        "message": "Select Developer Softwares to install",
+        "name": "developer_softwares",
+        "choices": developer_softwares,
     },
     # utilities
     {
@@ -172,8 +178,12 @@ def main():
         result = prompt(questions)
         print(result)
 
-        if result.get("editor"):
-            vscode.install()
+        if result.get("developer_softwares", []):
+            for item in result.get("developer_softwares"):
+                if item == "vscode":
+                    vscode.install()
+                if item == "postman":
+                    postman.install()
 
         if len(result.get("browser") or []):
             click.secho("Browser ... ", fg="bright_blue")
