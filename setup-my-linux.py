@@ -8,6 +8,7 @@ import softwares.browser as browser
 import softwares.utilities as utilities
 import softwares.oh_my_zsh as oh_my_zsh
 import softwares.nodejs as nodejs
+import softwares.mac_gesture as mac_gesture
 
 extensions_to_be_installed = [
     "https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/",
@@ -137,6 +138,13 @@ questions = [
         "choices": zsh_plugins,
         "when": lambda result: result["ohmyzsh"],
     },
+    # Mac Gestures
+    {
+        "type": "confirm",
+        "message": "Do you want to install Mac Gestures?",
+        "name": "gesture",
+        "default": True,
+    },
 ]
 
 
@@ -207,6 +215,9 @@ def main():
                         nodejs.install_stable_nodejs()
                     if result["node_version"] == "latest":
                         nodejs.install_latest_nodejs()
+
+        if result.get("gesture"):
+            mac_gesture.install()
 
         for item in extensions_to_be_installed:
             click.secho(f"💡 {item}", fg="bright_cyan")
